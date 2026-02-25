@@ -16,21 +16,21 @@ This system predicts the Top 3 most probable diseases based on patient symptoms 
 
 🏗️ Architecture Overview
 Client (Postman / UI)
-        ↓
+↓
 FastAPI REST API
-        ↓
+↓
 Input Validation (Pydantic)
-        ↓
+↓
 Preprocessing Layer
-        ↓
+↓
 XGBoost ML Model
-        ↓
+↓
 Risk Rule Engine
-        ↓
+↓
 Recommendation Engine
-        ↓
+↓
 Explainability Module
-        ↓
+↓
 JSON Response
 
 
