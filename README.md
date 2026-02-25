@@ -14,72 +14,32 @@ This system predicts the Top 3 most probable diseases based on patient symptoms 
 6. Structured JSON output
 
 
-🏗️ Architecture Overview
-Client (Postman / UI)
-↓
-FastAPI REST API
-↓
-Input Validation (Pydantic)
-↓
-Preprocessing Layer
-↓
-XGBoost ML Model
-↓
-Risk Rule Engine
-↓
-Recommendation Engine
-↓
-Explainability Module
-↓
-JSON Response
-
-
-📂 Project Structure
-symptom-checker/
-│
-├── app/
-│   └── main.py              # FastAPI application
-│
-├── data/
-│   └── dataset.csv          # Training dataset
-│
-├── model/
-│   ├── train.py             # Model training script
-│   └── disease_model.pkl    # Saved trained model
-│   └── label_encoder.pkl
-│
-├── tests/
-│   └── test_api.py          # API unit tests
-│
-├── requirements.txt
-└── README.md
-
 
 📊 Dataset Description
-Feature	Description
-Fever	Yes / No
-Cough	Yes / No
-Fatigue	Yes / No
-Difficulty Breathing	Yes / No
-Age	Integer (years)
-Gender	Male / Female
-Blood Pressure	Low / Normal / High
-Cholesterol Level	Normal / High
-Outcome Variable	Positive / Negative
+1. Feature	Description
+2. Fever	Yes / No
+3. Cough	Yes / No
+4. Fatigue	Yes / No
+5. Difficulty Breathing	Yes / No
+6. Age	Integer (years)
+7. Gender	Male / Female
+8. Blood Pressure	Low / Normal / High
+9. Cholesterol Level	Normal / High
+10. Outcome Variable	Positive / Negative
 
 Categorical values are encoded numerically during preprocessing.
 
 
 🤖 Machine Learning Model
 
-Algorithm: XGBoost Classifier
-Problem Type: Binary classification
-Target Variable: Disease outcome (Positive / Negative)
+1. Algorithm: XGBoost Classifier
+2. Problem Type: Binary classification
+3. Target Variable: Disease outcome (Positive / Negative)
 
 Why XGBoost?
-Excellent performance on tabular clinical data
-Handles non-linear feature interactions
-Robust and widely used in production ML systems
+1. Excellent performance on tabular clinical data
+2. Handles non-linear feature interactions
+3. Robust and widely used in production ML systems
 
 
 🧠 Hybrid Intelligence Approach
@@ -94,42 +54,53 @@ Overrides ML predictions in clinically high-risk scenarios, such as:
 2. High blood pressure and high cholesterol
 
 🏥 Risk Assessment Logic
+
 Probability Based
 Probability	Risk Level
-> 0.75	High
-0.45–0.75	Medium
-< 0.45	Low
+1. > 0.75	High
+2. 0.45–0.75	Medium
+2. < 0.45	Low
 
 
 🔌 API Usage
 Endpoint: POST /predict
 
-Sample Request
+Sample Request: 
 {
-  "Fever": "Yes",
-  "Cough": "Yes",
+  "Fever": "No",
+  "Cough": "No",
   "Fatigue": "Yes",
   "Difficulty_Breathing": "Yes",
-  "Age": 65,
+  "Age": 60,
   "Gender": "Male",
   "Blood_Pressure": "High",
   "Cholesterol_Level": "High"
 }
 
-Sample Response
+Sample Response: 
 {
   "prediction": {
-    "disease_risk_probability": 0.82,
-    "confidence_percentage": 82.0
+    "top_3_predictions": [
+      {
+        "disease": "Bronchitis",
+        "confidence_percentage": 61.35
+      },
+      {
+        "disease": "Osteoporosis",
+        "confidence_percentage": 19.16
+      },
+      {
+        "disease": "Rheumatoid Arthritis",
+        "confidence_percentage": 4.95
+      }
+    ]
   },
   "risk_assessment": {
     "risk_level": "High",
     "recommended_action": "Consult Doctor Immediately"
   },
   "clinical_flags": [
-    "Fever detected",
     "Breathing difficulty reported",
-    "High-risk age group",
     "Elevated blood pressure",
     "High cholesterol level"
   ]
@@ -141,39 +112,39 @@ Sample Response
 Run API tests using: pytest tests/test_api.py
 
 ▶️ Running the Application
-    1️⃣ Install Dependencies
+    1️ Install Dependencies
         pip install -r requirements.txt
-    2️⃣ Train the Model
+    2️ Train the Model
         python model/train.py
-    3️⃣ Start API Server
+    3️ Start API Server
         uvicorn app.main:app --reload
-    4️⃣ Open API Docs
+    4️ Open API Docs
         http://127.0.0.1:8000/docs
 
 
 🛠️ Technologies Used
 
-Python
-FastAPI
-XGBoost
-Scikit-learn
-Pandas
-NumPy
-Joblib
-Pytest
+1. Python
+2. FastAPI
+3. XGBoost
+4. Scikit-learn
+5. Pandas
+6. NumPy
+7. Joblib
+8. Pytest
 
 
 🔒 Design Considerations
 
-Deterministic ML preferred over LLMs for structured clinical data
-Explainability prioritized via clinical flags
-Clear separation between ML prediction and medical logic
-Production-ready API structure
+1. Deterministic ML preferred over LLMs for structured clinical data
+2. Explainability prioritized via clinical flags
+3. Clear separation between ML prediction and medical logic
+4. Production-ready API structure
 
 
 🚀 Future Enhancements
-SHAP-based model explainability
-Dockerization
-Logging and monitoring
-Multi-disease prediction
-Model versioning
+1. SHAP-based model explainability
+2. Dockerization
+3. Logging and monitoring
+4. Multi-disease prediction
+5. Model versioning
