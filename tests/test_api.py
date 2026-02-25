@@ -60,7 +60,33 @@ test_cases = [
             "Blood_Pressure": "High",
             "Cholesterol_Level": "High"
         }
-    }
+    },
+    {
+        "name": "Test Case 5 - Elderly High Risk",
+        "data": {
+            "Fever": "Yes",
+            "Cough": "Yes",
+            "Fatigue": "Yes",
+            "Difficulty_Breathing": "Yes",
+            "Age": 72,
+            "Gender": "Female",
+            "Blood_Pressure": "High",
+            "Cholesterol_Level": "High"
+        }
+    },,
+    {
+        "name": "Test Case 6 - Elderly High Risk",
+        "data": {
+            "Fever": "Yes",
+            "Cough": "Yes",
+            "Fatigue": "Yes",
+            "Difficulty_Breathing": "Yes",
+            "Age": 72,
+            "Gender": "Female",
+            "Blood_Pressure": "High",
+            "Cholesterol_Level": "High"
+        }
+    },
 ]
 
 # -----------------------------
