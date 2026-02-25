@@ -86,7 +86,7 @@ test_cases = [
             "Blood_Pressure": "High",
             "Cholesterol_Level": "High"
         }
-    },
+    }
 ]
 
 # -----------------------------
